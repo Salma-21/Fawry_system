@@ -47,4 +47,7 @@ public class User {
 		verified=b;
 	}
 
+
 }
+
+

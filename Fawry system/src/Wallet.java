@@ -1,4 +1,3 @@
-
 public class Wallet {
 	double amount;
 	public Wallet()
@@ -22,4 +21,5 @@ public class Wallet {
 		}
 		
 	}
+
 }
