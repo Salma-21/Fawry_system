@@ -4,6 +4,7 @@ public class User {
 	String userName;
 	String password;
 	String email;
+	int timesOfPay;
 	Boolean verified=false;
 	public User(String userName,String password,String email,Boolean verified )
 	{
@@ -11,6 +12,7 @@ public class User {
 		this.password=password;
 		this.email=email;
 		this.verified=true;
+		timesOfPay=0;
 		wallet=new Wallet();
 		
 	}
@@ -45,6 +47,9 @@ public class User {
 	public void setVerified(Boolean b)
 	{
 		verified=b;
+	}
+	public void increaseTimesOfPay() {
+		timesOfPay++;
 	}
 
 
