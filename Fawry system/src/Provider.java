@@ -12,6 +12,7 @@ public class Provider {
 		accept_cash=c;
 		
 	}
+	public Provider() {}
 	public String getName() {
 		return name;
 	}

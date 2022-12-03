@@ -6,6 +6,11 @@ public class User {
 	String email;
 	int timesOfPay;
 	Boolean verified=false;
+	int id;
+	static int SId;
+	static {
+		SId = 1;
+	}
 	public User(String userName,String password,String email,Boolean verified )
 	{
 		this.userName=userName;
@@ -14,8 +19,12 @@ public class User {
 		this.verified=true;
 		timesOfPay=0;
 		wallet=new Wallet();
+		id=SId;
+		SId++;
 		
 	}
+	public User() {}
+	
 	public String getUserName()
 	{
 		return userName;

@@ -42,10 +42,10 @@ public class TransactionProcess {
 			
 	}
 	
-	public TransactionInfo set_transaction_info(int id,String servicename,String providername,String paymentmethod,double payamount) {
-		TransactionInfo transinfo=new TransactionInfo( id, servicename, providername, paymentmethod, payamount);
+	public TransactionInfo set_transaction_info(int id,String servicename,String providername,String paymentmethod,double payamount,Vector<String>answer) {
+		TransactionInfo transinfo=new TransactionInfo( id, servicename, providername, paymentmethod, payamount,answer);
 		return transinfo;
 	}
-	}
+}
 
 

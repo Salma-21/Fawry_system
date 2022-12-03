@@ -1,3 +1,4 @@
+import java.util.Vector;
 
 public class TransactionInfo {
 	int TID;
@@ -10,11 +11,15 @@ public class TransactionInfo {
 	String providername;
 	String paymentmethod;
 	double payamount;
-	public TransactionInfo(int id,String servicename,String providername,String paymentmethod,double payamount) {
+	Vector<String> answer;
+	
+	public TransactionInfo(int id,String servicename,String providername,String paymentmethod,double payamount,Vector<String> answer)
+	{
 		this.servicename = servicename;
 		this.providername = providername;
 		this.paymentmethod = paymentmethod;
 		this.payamount = payamount;
+		this.answer=answer;
 		userID=id;
 		TID = id;
 		id++;
