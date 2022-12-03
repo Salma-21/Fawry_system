@@ -1,5 +1,5 @@
 import java.util.*;
 
 public class AllService {
-	Vector<Service>services;
+	Vector<Service>services=new Vector();
 }
