@@ -18,11 +18,7 @@ public class Provider {
 	public boolean checkCash() {
 		return accept_cash;
 	}
-	public void executeHandler(TransactionInfo transinfo,PaymentHistory history) {
-		command=new Handler(transinfo,history);
-		command.execute();
-		
-	}
+	
 	
 
 }

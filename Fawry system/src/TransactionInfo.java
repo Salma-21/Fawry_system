@@ -10,11 +10,12 @@ public class TransactionInfo {
 	String providername;
 	String paymentmethod;
 	double payamount;
-	public TransactionInfo(String servicename,String providername,String paymentmethod,double payamount) {
+	public TransactionInfo(int id,String servicename,String providername,String paymentmethod,double payamount) {
 		this.servicename = servicename;
 		this.providername = providername;
 		this.paymentmethod = paymentmethod;
 		this.payamount = payamount;
+		userID=id;
 		TID = id;
 		id++;
 	}
