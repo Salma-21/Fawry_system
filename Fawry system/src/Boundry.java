@@ -32,7 +32,7 @@ public class Boundry {
 	    	vec.add(string);
 		}
 	    //Provider p=new Provider(provider_name,vec,);
-	    s.add_provider(p);
+	   s.add_provider(p);
 		
 	}
 

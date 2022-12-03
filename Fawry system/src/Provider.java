@@ -10,6 +10,8 @@ public class Provider {
 		form=v;
 		accept_cash=c;
 	}
-	
+	public String getName() {
+		return name;
+	}
 
 }

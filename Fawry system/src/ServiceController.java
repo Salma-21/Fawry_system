@@ -8,7 +8,7 @@ public class ServiceController {
 		Service s=new Service();
 		for (int i=0; i<allService.services.size() ;i++)
 		{
-			if (allService.services.get(i).getNAme()== str)
+			if (allService.services.get(i).getName()== str)
 			{
 				s=allService.services.get(i);
 			}
