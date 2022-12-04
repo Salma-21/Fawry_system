@@ -26,5 +26,16 @@ public class ServiceController {
 		return false;
 		
 	}
+	public void addSpceficDiscount(double amount) {
+	
+		
+		servise.setSpceficDiscount(amount);
+		servise.updateCost();
+	
+	}
+	public ServiceController(Service service){
+		
+	}
+	
 
 }

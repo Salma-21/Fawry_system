@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Boundry {
+	AllServicesController allServicesController=new AllServicesController();
 	Sign sign;
 	TransactionProcess trans=new TransactionProcess();
 	PaymentHistory paymentHistory=new PaymentHistory();
@@ -184,8 +185,29 @@ public class Boundry {
 	   s.add_provider(p);
 		
 	}
+	public void addDiscount() {
+		
+		System.out.println("Choose Discount you want to Add: ");
+		System.out.println("1- Spcific Discount ");
+		
+		System.out.println("2- Ovarall Discount ");
+		 
+		Scanner obj1 = new Scanner(System.in);
+		int x = obj1.nextInt();
+		if(x==1)
+		{
+			System.out.println("Enter The Service Name: ");
+			Scanner obj2 = new Scanner(System.in);
+			String name = obj2.nextLine();
+			Service service =allServicesController.search(name);
+			System.out.println("Enter The amount of The Discount % : ");
+			 
+			Scanner obj3 = new Scanner(System.in);
+			int discount = obj3.nextInt();
+			service.setSpceficDiscount(discount/100);
+			
+		}
+		
+	}
 	
-	
-	
-
 }
