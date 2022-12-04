@@ -1,7 +1,7 @@
 import java.util.Vector;
 
 public class TransactionInfo {
-	int TID;
+	int TID;  // tranaction ID
 	static int id;
 	static {
 		id = 1;

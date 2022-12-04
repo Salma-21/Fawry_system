@@ -26,19 +26,25 @@ public class TransactionProcess {
 		return provider.checkCash();
 	}
 	
-	public void create_payment_method(String type) {
+	public void create_payment_method(String type,Wallet wallet) {
 		if(type=="cash")
 			payment=new CashPayment();
 		else if(type=="credit card")
 			payment=new CreditPayment();
 		else if(type=="wallet")
-			payment=new WalletPayment();
+			payment=new WalletPayment(wallet);
 		payment.pay(0);//need for check discount
 			
 	}
-	public void handel_transaction(ProviderController provider_control,TransactionInfo transinfo,PaymentHistory payHistory) {
+	public void handel_transaction(Command c) {
 		
-		provider_control.executeHandler(transinfo, payHistory);
+		//provider_control.executeHandler(transinfo, payHistory);
+		c.execute();
+		/*public void executeHandler(TransactionInfo transinfo,PaymentHistory history) {
+			p.command=new AddTransaction(transinfo,history);
+			p.command.execute();
+			
+		}*/
 			
 	}
 	

@@ -1,11 +1,12 @@
 
 public class User {
+	boolean refundRequestState = false;
 	Wallet wallet;
 	String userName;
 	String password;
 	String email;
 	int timesOfPay;
-	Boolean verified=false;
+	boolean verified=false;
 	int id;
 	static int SId;
 	static {
