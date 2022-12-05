@@ -206,8 +206,9 @@ public class Boundry {
 			int discount = obj3.nextInt();
 			service.setSpceficDiscount(discount/100);
 			
+			
 		}
-		
+		System.out.println("11111111111");
 	}
 	
 }
