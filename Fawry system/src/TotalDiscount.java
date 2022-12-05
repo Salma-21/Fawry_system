@@ -21,7 +21,7 @@ public class TotalDiscount {
 			double discountvalue=amount*cost;
 			cost-=discountvalue;
 		}
-		System.out.println("class total"+cost);
+		
 		return cost;
 			
 	}

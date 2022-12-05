@@ -162,13 +162,13 @@ public class Boundry {
 	     // Enter yes if you want to reply the next reply
 		do {
 			 System.out.println("Enter 1 or 2 if you want to reply the next reply : ");
-	         System.out.println("1- Yes  \n 2- No");
+	         System.out.println("1-Yes\n 2-No");
 	         Scanner obj1 = new Scanner(System.in);
 	         Continue = obj1.nextInt();
 	         displayrefundRequest(refundRequestController.refundRequestList.get(0));
 	        // Enter reply 
 	         System.out.println("Enter 1 or 2 reply : ");
-	         System.out.println("1- Yes  \n 2- No");
+	         System.out.println("1- Yes\n 2- No");
 	         Scanner obj2 = new Scanner(System.in);
 	         int reply = obj2.nextInt();
 	         if(reply == 1) 
@@ -191,7 +191,6 @@ public class Boundry {
 		Scanner obj1 = new Scanner(System.in);
 	    String str = obj1.nextLine();
 	    service = allServicesController.search(str);
-		//System.out.println(service.getName());
 	    System.out.println("service name:"+service.getName()); 
 	    System.out.println("service cost:"+service.getCost());
 	    System.out.println("service specific discount:"+service.getSpceficDiscount());
@@ -206,13 +205,11 @@ public class Boundry {
 	public static void addServiceProvider() {
 		Service service;
 		service = searchForService();
-		//System.out.println(service.getName());
 		System.out.println("Enter provider name you want to add:");
 		Scanner obj1 = new Scanner(System.in);
 	    String provider_name = obj1.nextLine();
 	    System.out.println("does it accept cash?(Enter 1 or 2)");
-	    System.out.println("1-YES");
-	    System.out.println("2-NO");
+	    System.out.println("1-YES\n2-NO");
 	    int cashState = obj1.nextInt();
 	    boolean acceptCash=false;
 	    if(cashState==1)
@@ -260,7 +257,7 @@ public class Boundry {
 			int num = obj1.nextInt();
 			System.out.println("Enter The amount of the discount: ");
 			double discount = obj1.nextDouble();
-			totalDIscount.setOverallDiscount(num, discount);
+			totalDIscount.setOverallDiscount(num, discount/100);
 			System.out.println("You have set this discount successfuly ");
 		}
 		else
@@ -283,7 +280,9 @@ public class Boundry {
 	
 	public static void main(String[] args) {
 		
-		// User 1
+		//some initialized values to test code directly
+		
+		// Users
 		
 		signContoller.signUp("yomna","12345","yomna@");
 		signContoller.signUp("maram" ,"12345","maram@"); 
@@ -303,19 +302,23 @@ public class Boundry {
 		
 		mainServices1.setservicename("Mobile recharge services");
 		allMainServicesControlles.AddService(mainServices1);
-		Service s1 = new Service("Vodafone",50);
+		Service s1 = new Service("Vodafone Mobile",50);
+		s1.setProvider(p);
 		allServicesController.AddService(s1);
 		s1.setProvider(p);
 		mainServices1.addService(s1);
-		Service s2 = new Service("Etisalat",60);
+		Service s2 = new Service("Etisalat Mobile",60);
+		s2.setProvider(p);
 		allServicesController.AddService(s2);
 		s2.setProvider(p);
 		mainServices1.addService(s2);
-		Service s3 = new Service("Orange",70);
+		Service s3 = new Service("Orange Mobile",70);
+		s3.setProvider(p);
 		allServicesController.AddService(s3);
 		s3.setProvider(p);
 		mainServices1.addService(s3);
-		Service s4 = new Service("We",40);
+		Service s4 = new Service("We Mobile",40);
+		s4.setProvider(p);
 		allServicesController.AddService(s4);
 		mainServices1.addService(s4);
 		
@@ -323,16 +326,20 @@ public class Boundry {
 		MainServices mainServices2 = new MainServices();
 		mainServices2.setservicename("Internet Payment services");
 		allMainServicesControlles.AddService(mainServices2);
-		Service s5 = new Service("Vodafone",50);
+		Service s5 = new Service("Vodafone Internet",50);
+		s5.setProvider(p);
 		allServicesController.AddService(s5);
 		mainServices2.addService(s5);
-		Service s6 = new Service("Etisalat",60);
+		Service s6 = new Service("Etisalat Internet",60);
+		s6.setProvider(p);
 		allServicesController.AddService(s6);
 		mainServices2.addService(s6);
-		Service s7 = new Service("Orange",70);
+		Service s7 = new Service("Orange Internet",70);
+		s7.setProvider(p);
 		allServicesController.AddService(s7);
 		mainServices2.addService(s7);
-		Service s8 = new Service("We",40);
+		Service s8 = new Service("We Internet",40);
+		s8.setProvider(p);
 		allServicesController.AddService(s8);
 		mainServices2.addService(s8);
 		
@@ -341,9 +348,11 @@ public class Boundry {
 		mainServices3.setservicename("Landline services");
 		allMainServicesControlles.AddService(mainServices3);
 		Service s9 = new Service("Monthly receipt",200);
+		s9.setProvider(p);
 		allServicesController.AddService(s9);
 		mainServices3.addService(s9);
 		Service s10 = new Service("Quarter receipt",400);
+		s10.setProvider(p);
 		allServicesController.AddService(s10);
 		mainServices3.addService(s10);
 		
@@ -351,14 +360,17 @@ public class Boundry {
 		MainServices mainServices4 = new MainServices();
 		mainServices4.setservicename("Donations");
 		allMainServicesControlles.AddService(mainServices4);
-		Service s11 = new Service("Cancer Hospital",30);
+		Service s11 = new Service("Cancer Hospital",10);
+		s11.setProvider(p);
 		allServicesController.AddService(s11);
 		s11.setProvider(p);
 		mainServices4.addService(s11);
 		Service s12 = new Service("Schools",20);
+		s12.setProvider(p);
 		allServicesController.AddService(s12);
 		mainServices4.addService(s12);
 		Service s13 = new Service("NGOs",15);
+		s13.setProvider(p);
 		allServicesController.AddService(s13);
 		mainServices4.addService(s13);
 		
@@ -379,6 +391,7 @@ public class Boundry {
 				System.out.println("1-sign in \n2-sign up");
 			    reply=obj1.nextInt();
 			    boolean flag = true;
+			    boolean bool3 = false;
 			    do {
 					switch(reply) {
 						case 1:
@@ -416,9 +429,15 @@ public class Boundry {
 							setUser(user);
 							flag = false;
 						break;
+						default:
+							System.out.println("Wrong input try again!");
+						break;
 					}
-			    }while(flag == true);
-				System.out.println("1-search for service by name \n2-pay for service \n3-add funds to wallet \n4-ask for refund \n5-check discount for services ");
+			    }while(flag == true );
+			    boolean bool=true;
+			    do {
+			    	
+				System.out.println("1-search for service by name \n2-pay for service \n3-add funds to wallet \n4-ask for refund \n5-check discount for services\n6-log out ");
 			    reply=obj1.nextInt();
 				switch(reply) {
 					 case 1:
@@ -438,7 +457,7 @@ public class Boundry {
 							IPayment payment=new CreditPayment();
 							payment.pay(fund);
 							user.addToWallet(fund);
-							System.out.println("You have added "+fund+" to wallet successfully and the total fund ypu have noe in wallet = "+user.getWalletAmount());
+							System.out.println("You have added "+fund+" to wallet successfully and the total fund you have noe in wallet = "+user.getWalletAmount());
 					break;
 					case 4:
 						requestrefund();
@@ -450,15 +469,22 @@ public class Boundry {
 						checkDiscount(name);
 
 					break;
+					case 6:
+						bool=false;
+						System.out.println("see you soon :)");
+						break;
 					default:
 						System.out.println("Wrong input try again!");
 					break;	
 						
 				}
+			    }while(bool);
 			}
 			else if (reply==2)
 			{
-				System.out.println("1-add service provider\n2-add discount\n3-reply to refund requests list");
+				boolean bool2=true;
+				do {
+				System.out.println("1-add service provider\n2-add discount\n3-reply to refund requests list\n4-log out");
 				int rep=obj1.nextInt();
 				switch(rep) {
 				case 1:
@@ -470,10 +496,16 @@ public class Boundry {
 				case 3:
 					replyrefund();
 					break;
+				case 4:
+					bool2=false;
+					System.out.println("see you soon :)");
+					break;
 				default:
 					System.out.println("Wrong input try again!");
 					break;
 				}
+				
+				}while(bool2);
 			}
 			else
 			{
