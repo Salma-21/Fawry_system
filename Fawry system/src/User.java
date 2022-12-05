@@ -6,18 +6,16 @@ public class User {
 	String password;
 	String email;
 	int timesOfPay;
-	boolean verified=false;
 	int id;
 	static int SId;
 	static {
 		SId = 1;
 	}
-	public User(String userName,String password,String email,Boolean verified )
+	public User(String userName,String password,String email )
 	{
 		this.userName=userName;
 		this.password=password;
 		this.email=email;
-		this.verified=true;
 		timesOfPay=0;
 		wallet=new Wallet();
 		id=SId;
@@ -38,9 +36,9 @@ public class User {
 	{
 		return email;
 	}
-	public Boolean getVerified()
+	public double getWalletAmount()
 	{
-		return verified;
+		return wallet.amount;
 	}
 	public void setUserName(String s)
 	{
@@ -54,12 +52,12 @@ public class User {
 	{
 		 email=s;
 	}
-	public void setVerified(Boolean b)
-	{
-		verified=b;
-	}
+	
 	public void increaseTimesOfPay() {
 		timesOfPay++;
+	}
+	public void addToWallet(double funds) {
+		wallet.addAmount(funds);;
 	}
 
 
