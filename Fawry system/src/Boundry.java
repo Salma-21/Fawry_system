@@ -148,10 +148,7 @@ public class Boundry {
 		 
 	}
 	
-	
-	
-	
-	
+
 	
 	//search
 	public Service searchForService() {
@@ -159,19 +156,32 @@ public class Boundry {
 		System.out.println("Enter service name:");
 		Scanner obj1 = new Scanner(System.in);
 	    String str = obj1.nextLine();
-	    ServiceController ser=new ServiceController();
-	    service=ser.search(str);
-	    System.out.println(service); 
+	    service=allServicesController.search(str);
+	    System.out.println(service.getName()); 
+	    System.out.println(service.getCost());
+	    System.out.println(service.getSpceficDiscount());
+	    for (int i=0; i<service.getProviders().size() ;i++)
+		{
+	    	System.out.println(service.getProviders().get(i));
+		}
 	    return service;
 	}
 	
 	//add provider
 	public void addServiceProvider() {
-		Service s=new Service();
-		s=searchForService();
-		System.out.println("Enter provider name:");
+		Service service;
+		service=searchForService();
+		System.out.println("Enter provider name you want to add:");
 		Scanner obj1 = new Scanner(System.in);
 	    String provider_name = obj1.nextLine();
+	    System.out.println("does it accept cash?(Enter 1 or 2)");
+	    System.out.println("1-YES");
+	    System.out.println("2-NO");
+	    int cashState = obj1.nextInt();
+	    boolean acceptCash=false;
+	    if(cashState==1)
+	    	acceptCash=true;
+	    
 	    System.out.println("Enter num of form fields:");
 	    int size = obj1.nextInt();
 	    Vector<String> vec=new Vector();
@@ -181,8 +191,9 @@ public class Boundry {
 	    	String string = obj1.nextLine();
 	    	vec.add(string);
 		}
-	    //Provider p=new Provider(provider_name,vec,);
-	   s.add_provider(p);
+	    Admin admin=new Admin();
+	    admin.addServiceProvider(service,provider_name,vec,acceptCash);
+
 		
 	}
 	public void addDiscount() {
@@ -208,7 +219,6 @@ public class Boundry {
 			
 			
 		}
-		System.out.println("11111111111");
 	}
 	
 }

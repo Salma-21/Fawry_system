@@ -6,8 +6,8 @@ public class Provider {
 	boolean accept_cash;
 	Vector<String> form=new Vector();
 	
-	public Provider(String PN,Vector<String> v,boolean c) {
-		name=PN;
+	public Provider(String providerName,Vector<String> v,boolean c) {
+		name=providerName;
 		form=v;
 		accept_cash=c;
 		

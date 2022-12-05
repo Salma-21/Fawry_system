@@ -8,9 +8,14 @@ public class Service {
 	
     public Service() {
     	specieficDiscount=0;
+    	cost=0;
 	}
 	public String getName() {
 		return name;
+	}
+	public void setProvider(Provider pro){
+		
+		 providers.add(pro);
 	}
 	public Vector<Provider> getProviders(){
 		
@@ -18,6 +23,14 @@ public class Service {
 	}
 	public void setSpceficDiscount(double s) {
 		specieficDiscount +=s;
+		
+	}
+	public double getSpceficDiscount() {
+		return specieficDiscount;
+		
+	}
+	public double getCost() {
+		return cost;
 		
 	}
 	public void updateCost() {
