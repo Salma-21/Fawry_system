@@ -23,6 +23,7 @@ public class Service {
 	}
 	public void setSpceficDiscount(double s) {
 		specieficDiscount +=s;
+		updateCost();
 		
 	}
 	public double getSpceficDiscount() {

@@ -2,7 +2,7 @@ import java.util.Vector;
 
 public class RefundRequestController {
 	PaymentHistory P;
-	RefundRequests refundrequest = new RefundRequests() ; 
+	RefundRequests refundrequest = RefundRequests.getInstance() ; 
 	SignController signController = new SignController();
 	
 	 Vector<TransactionInfo>refundRequestList = refundrequest.getAllRefund();

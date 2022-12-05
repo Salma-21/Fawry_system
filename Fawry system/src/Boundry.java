@@ -5,14 +5,19 @@ public class Boundry {
 	static AllServicesController allServicesController=new AllServicesController();
 	static Sign sign;
 	static TransactionProcess trans=new TransactionProcess();
-	static PaymentHistory paymentHistory=new PaymentHistory();
+	static PaymentHistory paymentHistory=PaymentHistory.getInstance();
 	static Provider provider;
 	static ProviderController providerController;
 	static RefundRequestController refundRequestController = new RefundRequestController(paymentHistory);
 	static Admin admin = new Admin(refundRequestController);
 	static SignController signContoller=new SignController();;
-	static User user=new User();//will be equal to user who sign in 
+	static User user;
+	static TotalDiscount totalDIscount=new TotalDiscount() ; 
 	
+	public static void setUser(User userr)
+	{
+		user=userr;
+	}
 	public static void displayService(Vector<Service>s)
 	{
 		for(int i=0;i<s.size();i++)
@@ -74,7 +79,8 @@ public class Boundry {
 		 
 		 System.out.println("Enter the payment method name you want :");
 		 String paymentName = obj1.nextLine();
-		 trans.create_payment_method(paymentName , user.wallet);
+		 double cost =  getTotalCost(user,service);
+		 trans.create_payment_method(paymentName , user.wallet,cost);
 		 
 		 //fill provider form
 		 
@@ -90,6 +96,10 @@ public class Boundry {
 		user.increaseTimesOfPay();
 		System.out.println(" ****Congratulation you have finished the payment process**** ");
 	    
+	}
+	public static double getTotalCost(User user,Service service)
+	{
+		  return totalDIscount.getTotalCost(user, service);
 	}
 	
 	///Maram  
@@ -209,17 +219,25 @@ public class Boundry {
 		if(x==1)
 		{
 			System.out.println("Enter The Service Name: ");
-			Scanner obj2 = new Scanner(System.in);
-			String name = obj2.nextLine();
+			String name = obj1.nextLine();
 			Service service =allServicesController.search(name);
 			System.out.println("Enter The amount of The Discount % : ");
-			 
-			Scanner obj3 = new Scanner(System.in);
-			int discount = obj3.nextInt();
+			int discount = obj1.nextInt();
 			service.setSpceficDiscount(discount/100);
-			
-			
+			System.out.println("You have set this discount successfuly ");
 		}
+		else if(x==2)
+		{
+			System.out.println("Enter The number of payment times for user to apply this discount : ");
+			int num = obj1.nextInt();
+			System.out.println("Enter The amount of the discount: ");
+			double discount = obj1.nextDouble();
+			totalDIscount.setOverallDiscount(num, discount);
+			System.out.println("You have set this discount successfuly ");
+		}
+		else
+			System.out.println("Wrong input try again!");
+			
 	}
 	public static  User  signIn(String username,String pass)
 	{
@@ -263,6 +281,7 @@ public class Boundry {
 						if(user!=null)
 						{
 							System.out.println("Welcome "+user.userName);
+							setUser(user);
 							signed=true;
 						}
 							
@@ -279,6 +298,7 @@ public class Boundry {
 						user=signContoller.signUp(name, passw, email);
 						System.out.println("Welcome "+user.userName);
 						signed=true;
+						setUser(user);
 						break;
 					case 3:
 						System.out.println("Enter the service name you want to search for:");

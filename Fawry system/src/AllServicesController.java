@@ -1,7 +1,7 @@
 
 public class AllServicesController {
 	
-AllService allService=new AllService();
+AllService allService=AllService.getInstance();
 	
 	public Service search(String str){
 		

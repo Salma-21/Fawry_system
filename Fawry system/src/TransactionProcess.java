@@ -26,14 +26,14 @@ public class TransactionProcess {
 		return provider.checkCash();
 	}
 	
-	public void create_payment_method(String type,Wallet wallet) {
+	public void create_payment_method(String type,Wallet wallet,double cost) {
 		if(type=="cash")
 			payment=new CashPayment();
 		else if(type=="credit card")
 			payment=new CreditPayment();
 		else if(type=="wallet")
 			payment=new WalletPayment(wallet);
-		payment.pay(0);//need for check discount
+		payment.pay(cost);
 			
 	}
 	public void handel_transaction(Command c) {

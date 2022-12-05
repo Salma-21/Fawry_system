@@ -28,6 +28,10 @@ public class User {
 	{
 		return userName;
 	}
+	public int gettimesOfPay()
+	{
+		return timesOfPay;
+	}
 	public String getPassword()
 	{
 		return password;
