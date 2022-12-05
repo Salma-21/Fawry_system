@@ -3,6 +3,10 @@ import java.util.*;
 public class ServiceController {
 	Service servise;
 	
+	public ServiceController(Service servise) {
+		this.servise = servise;
+	}
+	
 	public Provider SearchProvider(String providername) {
 		for(int i =0 ;i<servise.providers.size();i++) {
 			if(servise.providers.get(i).getName() == providername) {
@@ -28,14 +32,9 @@ public class ServiceController {
 	}
 	public void addSpceficDiscount(double amount) {
 	
-		
 		servise.setSpceficDiscount(amount);
 		servise.updateCost();
 	
 	}
-	public ServiceController(Service service){
-		
-	}
 	
-
 }

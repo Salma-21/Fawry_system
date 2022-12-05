@@ -2,29 +2,34 @@ import java.util.Vector;
 
 public class SignController {
 	Sign sign = new Sign();
-	Vector<User>users = sign.getAllUsers();
+	//Vector<User>users = new ;
 	public User signIn(String userName,String password) {
 		User user;
-		user=search(userName,password);
+		user =search(userName,password);
 		return user;
 
 	}
 
-
 	public User search(String userName,String password) {
-		for(int i=0;i< users.size();i++)
+		
+		if(sign.users != null ) 
 		{
-			if(users.elementAt(i).getUserName()==userName && users.elementAt(i).getPassword()==password)
+			for(int i=0;i< sign.users.size();i++)
 			{
-				return users.elementAt(i);
+			
+				if(sign.users.get(i).getUserName().equals(userName) && sign.users.get(i).getPassword().equals(password))
+				{
+					//System.out.println(sign.users.get(i).getUserName() + sign.users.get(i).getPassword());
+					return sign.users.get(i);
+				}
 			}
 		}
 		return null;
 	}
-public User signUp(String userName,String password,String email ) {
-		
-		User newUser=new User(userName,password,email);
-		users.addElement(newUser);
+    public User signUp(String userName,String password,String email ) {
+		User newUser = new User(userName,password,email);
+		sign.users.addElement(newUser);
+		//users.addElement(newUser);
 		return newUser;
 	}
 }

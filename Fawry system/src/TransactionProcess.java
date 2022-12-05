@@ -2,9 +2,11 @@ import java.util.Vector;
 
 public class TransactionProcess {
 	IPayment payment;
-	ServiceController service_control;
 	AllServicesController all_service_control;
-	
+	public TransactionProcess() {
+		all_service_control = new AllServicesController();
+		
+	}
 	public Vector<Service> get_services(){
 		return all_service_control.allService.services;
 	}
@@ -18,7 +20,8 @@ public class TransactionProcess {
 		return service.getProviders();
 	}
 	
-	public Provider choose_Provider(String providerName) {
+	public Provider choose_Provider(String providerName,Service service) {
+		ServiceController service_control = new ServiceController(service);
 		return service_control.SearchProvider(providerName);
 	}
 	

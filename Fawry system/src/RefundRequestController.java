@@ -33,15 +33,15 @@ public class RefundRequestController {
 		 int UserID;
     	  UserID = refundrequest.refundRequestList.get(0).userID;
     	  
-          for(int i =0; i < signController.users.size() ;i++) {
-        	   if(signController.users.get(i).id == UserID) {
+          for(int i =0; i < signController.sign.users.size() ;i++) {
+        	   if(signController.sign.users.get(i).id == UserID) {
         		   
         		   if(reply) {
-        			   signController.users.get(i).refundRequestState = true;
-        			   addAmounttoWallet(signController.users.get(i),transinfo.payamount);
+        			   signController.sign.users.get(i).refundRequestState = true;
+        			   addAmounttoWallet(signController.sign.users.get(i),transinfo.payamount);
         		   }
         		   else
-        		       signController.users.get(i).refundRequestState = false;
+        		       signController.sign.users.get(i).refundRequestState = false;
         	   }
           }
           for(int i = 0; i < refundrequest.refundRequestList.size() ;i++) {

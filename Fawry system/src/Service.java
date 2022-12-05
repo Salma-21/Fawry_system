@@ -6,9 +6,13 @@ public class Service {
 	String name;
 	double specieficDiscount;
 	
-    public Service() {
-    	specieficDiscount=0;
-    	cost=0;
+    public Service(String name,int cost) {
+    	this.name = name;
+    	specieficDiscount = 0;
+    	this.cost=cost;
+	}
+    public void setName(String name) {
+		 this.name = name;
 	}
 	public String getName() {
 		return name;
@@ -24,10 +28,13 @@ public class Service {
 	public void setSpceficDiscount(double s) {
 		specieficDiscount +=s;
 		updateCost();
-		
 	}
 	public double getSpceficDiscount() {
 		return specieficDiscount;
+		
+	}
+	public void SetCost(double cost) {
+		this.cost = cost;
 		
 	}
 	public double getCost() {
@@ -35,8 +42,10 @@ public class Service {
 		
 	}
 	public void updateCost() {
-		double discountvalue=specieficDiscount*cost;
-		cost-=discountvalue;
+		double discountvalue = specieficDiscount * cost;
+		cost -= discountvalue;
+		SetCost(discountvalue);
+		
 	}
 		
 
