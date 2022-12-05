@@ -35,7 +35,14 @@ public class TransactionProcess {
 		else if(type=="credit card")
 			payment=new CreditPayment();
 		else if(type=="wallet")
-			payment=new WalletPayment(wallet);
+		{
+			if(wallet !=null)
+				payment=new WalletPayment(wallet);
+			
+		}
+			
+		else 
+			payment=new CreditPayment();
 		payment.pay(cost);
 			
 	}

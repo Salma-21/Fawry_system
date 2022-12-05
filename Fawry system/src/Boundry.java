@@ -93,22 +93,31 @@ public class Boundry {
 		 System.out.println("Enter the payment method name you want :");
 		 String paymentName = obj1.nextLine();
 		 double cost =  getTotalCost(user,service);
-		 trans.create_payment_method(paymentName , user.wallet,cost);
+		 boolean bool =true;
+		 if(user.wallet.getAmount()<cost && paymentName.equals("Wallet"))
+		 {
+			 System.out.println("oops! your funds in wallet less than you want to pay you can choose diffrent method or add fund to wallet");
+			 bool=false;
+		}
+			 trans.create_payment_method(paymentName , user.wallet,cost);
 		 
 		 //fill provider form
+		 if(bool) 
+		 {
+			 Vector<String>answer=fillForm(provider.form);
+			 
+			 //save transaction
+			  //check total discount
+			 TransactionInfo transinfo=trans.set_transaction_info(user.id,serviceName,providerName,paymentName,cost,answer);
+			 System.out.println("this is your Transaction id you will need it if you want to refund : "+transinfo.TID);
+			 
+			 Command command = new AddTransaction(transinfo,paymentHistory);
+			trans.handel_transaction(command);
+			user.increaseTimesOfPay();
+			System.out.println(" ****Congratulation you have finished the payment process**** ");
+		    
+		 }
 		 
-		 Vector<String>answer=fillForm(provider.form);
-		 
-		 //save transaction
-		 
-		 double amount=0; //check total discount
-		 TransactionInfo transinfo=trans.set_transaction_info(user.id,serviceName,providerName,paymentName,amount,answer);
-		 
-		 Command command = new AddTransaction(transinfo,paymentHistory);
-		trans.handel_transaction(command);
-		user.increaseTimesOfPay();
-		System.out.println(" ****Congratulation you have finished the payment process**** ");
-	    
 	}
 	public static double getTotalCost(User user,Service service)
 	{
@@ -214,8 +223,9 @@ public class Boundry {
 	    Vector<String> vec=new Vector();
 	    for (int i=0; i<size ;i++)
 		{
-	    	System.out.println("Enter field"+i+1+":");
-	    	String string = obj1.nextLine();
+	    	System.out.println("Enter field"+(i+1)+":");
+	    	Scanner obj5 = new Scanner(System.in);
+	    	String string = obj5.nextLine();
 	    	vec.add(string);
 		}
 	    Admin admin=new Admin();
@@ -267,7 +277,7 @@ public class Boundry {
 	{
 		Service service;
 		service=allServicesController.search(serviceName);
-		System.out.println(service.getSpceficDiscount());
+		System.out.println(service.getSpceficDiscount()*100+"%");
 	}
 	
 	
@@ -341,7 +351,7 @@ public class Boundry {
 		MainServices mainServices4 = new MainServices();
 		mainServices4.setservicename("Donations");
 		allMainServicesControlles.AddService(mainServices4);
-		Service s11 = new Service("Cancer Hospital",10);
+		Service s11 = new Service("Cancer Hospital",30);
 		allServicesController.AddService(s11);
 		s11.setProvider(p);
 		mainServices4.addService(s11);
@@ -428,7 +438,7 @@ public class Boundry {
 							IPayment payment=new CreditPayment();
 							payment.pay(fund);
 							user.addToWallet(fund);
-							System.out.println("You have added "+fund+" to wallet successfully and tthe total fund ypu have noe in wallet = "+user.getWalletAmount());
+							System.out.println("You have added "+fund+" to wallet successfully and the total fund ypu have noe in wallet = "+user.getWalletAmount());
 					break;
 					case 4:
 						requestrefund();

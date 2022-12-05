@@ -31,7 +31,7 @@ public class RefundRequestController {
 	
 	 public boolean remove_refund_request(TransactionInfo transinfo , boolean reply) {
 		 int UserID;
-    	  UserID = refundrequest.refundRequestList.get(0).userID;
+    	  UserID = refundrequest.refundRequestList.firstElement().userID;
     	  
           for(int i =0; i < signController.sign.users.size() ;i++) {
         	   if(signController.sign.users.get(i).id == UserID) {

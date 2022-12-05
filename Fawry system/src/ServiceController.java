@@ -9,12 +9,13 @@ public class ServiceController {
 	
 	public Provider SearchProvider(String providername) {
 		for(int i =0 ;i<servise.providers.size();i++) {
-			if(servise.providers.get(i).getName() == providername) {
+			if(servise.providers.get(i).getName().equals(providername) ) {
 				return servise.providers.get(i);
 			}
 		
 	    }
-		return null;
+		
+			return null;
 	}
 	public boolean add_provider(Provider p) {
 		servise.providers.add(p);

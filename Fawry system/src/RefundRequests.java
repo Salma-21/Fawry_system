@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class RefundRequests {
-	 Vector<TransactionInfo>refundRequestList;
+	 Vector<TransactionInfo>refundRequestList=new Vector();
 	 private static RefundRequests obj;
 		private RefundRequests() {}
 		public static RefundRequests getInstance()
